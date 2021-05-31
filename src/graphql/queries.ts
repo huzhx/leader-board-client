@@ -7,4 +7,12 @@ export const GET_PLAYERS = gql`
       name
     }
   }
+  query PlayersActivitiesForLastHour {
+    playersActivitiesForLastHour {
+      id
+      name
+      numOfActivities
+      totalPoints
+    }
+  }
 `;

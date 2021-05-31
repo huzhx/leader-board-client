@@ -17,6 +17,12 @@ export type Scalars = {
 };
 
 
+export type Activity = {
+  __typename?: 'Activity';
+  timestamp: Scalars['Int'];
+  point: Scalars['Int'];
+};
+
 export enum CacheControlScope {
   Public = 'PUBLIC',
   Private = 'PRIVATE'
@@ -27,11 +33,15 @@ export type Player = {
   id: Scalars['ID'];
   name: Scalars['String'];
   team: TeamCode;
+  numOfActivities: Scalars['Int'];
+  totalPoints: Scalars['Int'];
+  activities?: Maybe<Array<Maybe<Activity>>>;
 };
 
 export type Query = {
   __typename?: 'Query';
   players?: Maybe<Array<Maybe<Player>>>;
+  playersActivitiesForLastHour?: Maybe<Array<Maybe<Player>>>;
 };
 
 export enum TeamCode {
@@ -48,6 +58,17 @@ export type PlayersQuery = (
   & { players?: Maybe<Array<Maybe<(
     { __typename?: 'Player' }
     & Pick<Player, 'id' | 'name'>
+  )>>> }
+);
+
+export type PlayersActivitiesForLastHourQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PlayersActivitiesForLastHourQuery = (
+  { __typename?: 'Query' }
+  & { playersActivitiesForLastHour?: Maybe<Array<Maybe<(
+    { __typename?: 'Player' }
+    & Pick<Player, 'id' | 'name' | 'numOfActivities' | 'totalPoints'>
   )>>> }
 );
 
@@ -87,3 +108,40 @@ export function usePlayersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Pl
 export type PlayersQueryHookResult = ReturnType<typeof usePlayersQuery>;
 export type PlayersLazyQueryHookResult = ReturnType<typeof usePlayersLazyQuery>;
 export type PlayersQueryResult = Apollo.QueryResult<PlayersQuery, PlayersQueryVariables>;
+export const PlayersActivitiesForLastHourDocument = gql`
+    query PlayersActivitiesForLastHour {
+  playersActivitiesForLastHour {
+    id
+    name
+    numOfActivities
+    totalPoints
+  }
+}
+    `;
+
+/**
+ * __usePlayersActivitiesForLastHourQuery__
+ *
+ * To run a query within a React component, call `usePlayersActivitiesForLastHourQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePlayersActivitiesForLastHourQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePlayersActivitiesForLastHourQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePlayersActivitiesForLastHourQuery(baseOptions?: Apollo.QueryHookOptions<PlayersActivitiesForLastHourQuery, PlayersActivitiesForLastHourQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PlayersActivitiesForLastHourQuery, PlayersActivitiesForLastHourQueryVariables>(PlayersActivitiesForLastHourDocument, options);
+      }
+export function usePlayersActivitiesForLastHourLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PlayersActivitiesForLastHourQuery, PlayersActivitiesForLastHourQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PlayersActivitiesForLastHourQuery, PlayersActivitiesForLastHourQueryVariables>(PlayersActivitiesForLastHourDocument, options);
+        }
+export type PlayersActivitiesForLastHourQueryHookResult = ReturnType<typeof usePlayersActivitiesForLastHourQuery>;
+export type PlayersActivitiesForLastHourLazyQueryHookResult = ReturnType<typeof usePlayersActivitiesForLastHourLazyQuery>;
+export type PlayersActivitiesForLastHourQueryResult = Apollo.QueryResult<PlayersActivitiesForLastHourQuery, PlayersActivitiesForLastHourQueryVariables>;
