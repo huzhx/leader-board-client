@@ -4,9 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { ApolloProvider, HttpLink, ApolloClient, InMemoryCache } from '@apollo/client';
+
+const graphQLink = new HttpLink({
+  uri: process.env.REACT_APP_API_ENDPOINT,
+});
+const cache = new InMemoryCache();
+const client = new ApolloClient({
+  link: graphQLink,
+  cache,
+  credentials: 'include',
+  resolvers: {},
+});
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
