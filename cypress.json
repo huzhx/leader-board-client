@@ -1,1 +1,6 @@
-{}
+{
+  "$schema": "https://on.cypress.io/cypress.schema.json",
+  "env": {
+    "BASE_URL": "http://localhost:3000"
+  }
+}
