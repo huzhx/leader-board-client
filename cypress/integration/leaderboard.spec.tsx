@@ -5,5 +5,6 @@ describe('Show all players', () => {
     cy.get('#name');
     cy.get('#numOfActivities');
     cy.get('#totalPoints');
+    cy.get('[id="leaderboard"]').find('[id="leaderboardTitle"]');
   });
 });
