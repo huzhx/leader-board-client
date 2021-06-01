@@ -1,12 +1,25 @@
 import React from 'react';
 
-const Header = ({ className, timeLabel, loading }: { className: string; timeLabel: string; loading: boolean }) => {
+const Header = ({
+  className,
+  timeLabel,
+  loading,
+  onClick,
+}: {
+  className: string;
+  timeLabel: string;
+  loading: boolean;
+  onClick: any;
+}) => {
   return (
     <div id="header" className={className}>
       <div className="text-3xl font-bold ">Leaderboard</div>
-      <div className="flex flex-row space-x-4">
+      <div className="flex flex-row space-x-4 items-center">
         <div className="flex-shrink font-medium text-gray-600 col-span-3">{timeLabel}</div>
-        <div className="flex-shrink text-gray-600 justify-center">
+        <div
+          className="flex-shrink text-gray-600 justify-center cursor-pointer hover:bg-gray-300 transition delay-150 duration-300 rounded-full p-1"
+          onClick={onClick}
+        >
           {loading ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
