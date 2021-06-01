@@ -48,7 +48,7 @@ const Leaderboard = ({ className }: { className: string }) => {
     <div id="leaderboard" className={className}>
       <Header className="flex-col my-4" timeLabel={timeLabel} loading={loading} onClick={onClick} />
       <div className="bg-white rounded-lg shadow-md divide-y-2 divide-gray-300 divide-opacity-20">
-        <LeaderboardTitle className="grid grid-cols-5 gap-2 p-2 px-4 md:p-4 md:pl-8 bg-gray-700 text-gray-50 rounded-t-lg text-xs md:text-base font-semibold tracking-wider items-center" />
+        <LeaderboardTitle className="grid grid-cols-5 gap-2 p-2 px-4 md:p-4 md:pl-8 bg-gray-700 text-gray-50 rounded-t-lg text-xs md:text-base md:font-semibold md:tracking-wider items-center" />
         {players.map(
           (player: { id: number; name: string; numOfActivities: number; totalPoints: number }, key: number) => (
             <Player

@@ -20,13 +20,16 @@ const Player = ({
       <span id="rankingPos" className="font-sans font-normal text-gray-600">
         {rankingPos}
       </span>
-      <span id="name" className="tracking-wider font-medium text-gray-600 subpixel-antialiased col-span-2">
+      <span
+        id="name"
+        className="text-xs md:text-lg tracking-wider font-medium text-gray-600 subpixel-antialiased col-span-2 break-normal"
+      >
         {name}
       </span>
-      <span id="numOfActivities" className="font-sans font-normal text-gray-400">
+      <span id="numOfActivities" className="text-xs md:text-lg font-sans font-normal text-gray-400">
         {numOfActivities}
       </span>
-      <span id="totalPoints" className="font-sans font-normal text-gray-600">
+      <span id="totalPoints" className="text-xs md:text-lg font-sans font-normal text-gray-600">
         {totalPoints}
       </span>
     </div>
