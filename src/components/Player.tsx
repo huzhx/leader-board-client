@@ -2,12 +2,14 @@ import React from 'react';
 
 const Player = ({
   id,
+  rankingPos,
   name,
   numOfActivities,
   totalPoints,
   className,
 }: {
   id: number;
+  rankingPos: number;
   name: string;
   numOfActivities: number;
   totalPoints: number;
@@ -15,6 +17,9 @@ const Player = ({
 }) => {
   return (
     <div id="player" className={className}>
+      <span id="rankingPos" className="font-sans font-normal text-gray-600">
+        {rankingPos}
+      </span>
       <span id="name" className="tracking-wider font-medium text-gray-600 subpixel-antialiased col-span-2">
         {name}
       </span>

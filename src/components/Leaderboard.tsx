@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { usePlayersQuery, usePlayersActivitiesForLastHourQuery } from '../generated/graphql';
+import { usePlayersActivitiesForLastHourQuery } from '../generated/graphql';
 import Player from './Player';
 import LeaderboardTitle from './LeaderboardTitle';
 
@@ -25,17 +25,20 @@ const Leaderboard = ({ className }: { className: string }) => {
 
   return (
     <div id="leaderboard" className={className}>
-      <LeaderboardTitle className="grid grid-cols-4 gap-2 p-2 px-4 md:p-4 bg-gray-700 text-gray-50 rounded-t-lg text-xs md:text-base font-semibold tracking-wider items-center" />
-      {players.map((player: { id: number; name: string; numOfActivities: number; totalPoints: number }) => (
-        <Player
-          className="grid grid-cols-4 gap-2 p-2 px-4 md:p-4"
-          key={player.id}
-          id={player.id}
-          name={player.name}
-          numOfActivities={player.numOfActivities}
-          totalPoints={player.totalPoints}
-        />
-      ))}
+      <LeaderboardTitle className="grid grid-cols-5 gap-2 p-2 px-4 md:p-4 md:pl-8 bg-gray-700 text-gray-50 rounded-t-lg text-xs md:text-base font-semibold tracking-wider items-center" />
+      {players.map(
+        (player: { id: number; name: string; numOfActivities: number; totalPoints: number }, key: number) => (
+          <Player
+            className="grid grid-cols-5 gap-2 p-2 px-4 md:p-4 md:pl-8"
+            key={player.id}
+            id={player.id}
+            rankingPos={key + 1}
+            name={player.name}
+            numOfActivities={player.numOfActivities}
+            totalPoints={player.totalPoints}
+          />
+        )
+      )}
     </div>
   );
 };
