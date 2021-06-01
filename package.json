@@ -55,6 +55,7 @@
     "@graphql-codegen/typescript-operations": "1.18.0",
     "@graphql-codegen/typescript-react-apollo": "2.2.5",
     "cypress": "^7.4.0",
+    "tailwindcss": "^2.1.2",
     "webpack": "^5.38.1"
   }
 }
