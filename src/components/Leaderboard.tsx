@@ -26,7 +26,6 @@ const Leaderboard = ({ className }: { className: string }) => {
   }, []);
 
   const onClick = () => {
-    console.log('im here');
     getPlayerActivities();
   };
 
