@@ -52,6 +52,9 @@
       "last 1 safari version"
     ]
   },
+  "engines": {
+    "node": "14.17.0"
+  },
   "devDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
     "@graphql-codegen/cli": "1.21.5",
